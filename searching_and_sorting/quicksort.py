@@ -5,7 +5,7 @@ T = TypeVar('T', int, float, str)
 
 def quick_sort_readable(numbers: List[T]) -> List[T]:
 	"""
-	Sorts a list of elements in ascending order using an out-ofplace Quicksort.
+	Sorts a list of elements in ascending order using an out-of place Quicksort.
 	High readability, but higher memory usage.
 
 	Time Complexity:
@@ -39,6 +39,8 @@ def quick_sort_inplace(numbers: List[T]) -> None:
 	Optimized for memory efficiency.
 
 	Time Complexity:
+		- Best/Average Case: O(n log n)
+		- Worst Case: O(n^2) when pivot choices are highly unbalanced.
 	Space Complexity: O(log n) auxiliary space for recursive stack.
 
 	Args:
@@ -53,6 +55,10 @@ def quick_sort_inplace(numbers: List[T]) -> None:
 			_quicksort(arr, pivot_idx + 1, high)
 
 	def _partition(arr: List[T], low: int, high: int) -> int:
+		rand_idx: int = random.randint(low, high)
+
+		arr[rand_idx], arr[high] = arr[high], arr[rand_idx]
+
 		pivot = arr[high]
 		i = low - 1
 
