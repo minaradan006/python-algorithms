@@ -40,5 +40,3 @@ def hanoi_solver(n: int) -> None:
 		print_state()
 		print("-" * 30)
 		move_disks(n, 'A', 'C', 'B')
-
-hanoi_solver(4)
